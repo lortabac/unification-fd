@@ -61,7 +61,6 @@ import Prelude hiding (mapM, sequence, foldr, foldr1, foldl, foldl1)
 
 import Data.Word               (Word8)
 import Data.Functor.Fixedpoint (Fix(..), unFix)
-import Data.Monoid             ((<>))
 import Data.Traversable        (Traversable(..))
 #if __GLASGOW_HASKELL__ < 710
 import Data.Foldable           (Foldable(..))
