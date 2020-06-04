@@ -34,6 +34,7 @@ module Control.Unification.IntVar
     , IntBindingState()
     , IntBindingT()
     , runIntBindingT
+    , resumeIntBindingT
     , evalIntBindingT
     , execIntBindingT
     ) where
@@ -159,6 +160,8 @@ instance (MonadLogic m) => MonadLogic (IntBindingT t m) where
 runIntBindingT :: IntBindingT t m a -> m (a, IntBindingState t)
 runIntBindingT (IBT m) = runStateT m emptyIntBindingState
 
+resumeIntBindingT :: IntBindingT t m a -> IntBindingState t -> m (a, IntBindingState t)
+resumeIntBindingT (IBT m) s = runStateT m s
 
 -- | N.B., you should explicitly apply bindings before calling this
 -- function, or else the bindings will be lost
